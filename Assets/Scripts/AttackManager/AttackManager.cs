@@ -22,14 +22,12 @@ public class AttackManager : MonoBehaviour
 
     public IEnumerator ExecuteActions(){
         foreach(SkillBase skill in skillQueue){
-            //Throw ball at target
-            skill.GetAttacker().GetComponent<ThrowBallAtTarget>().SetTargets(skill.GetAttacker(), skill.GetTarget());
+            Debug.Log(skill.GetType());
+            //Wait for attack to hit, then execute skill
+            yield return StartCoroutine(WaitTillBallCollides(skill));
             skill.ExecuteSkillAction();
-            Debug.Log("Attacker: " + skill.GetAttacker() + " Target: " + skill.GetTarget());
-            Debug.Log("Work left here");
-            //Make an object that will hit the target. When it hits start its animation, once animation ends execute skill action
-            yield return new WaitForSeconds(1f);
         }
+        yield return new WaitForSeconds(1);
         yield return StartCoroutine(ExecuteEnemyActions());
         yield return new WaitForSeconds(1f);
         InvokeEndOfTurnEffects();
@@ -37,6 +35,13 @@ public class AttackManager : MonoBehaviour
         
 
         skillQueue.Clear();
+    }
+
+    //Check if the ball has hit enemy. In that case, execute its skill action and inflict status effects
+    IEnumerator WaitTillBallCollides(SkillBase skill){
+        ThrowBallAtTarget ballThrow = skill.GetAttacker().GetComponent<ThrowBallAtTarget>();
+        ballThrow.SetTargets(skill.GetAttacker(), skill.GetTarget());
+        yield return new WaitUntil(() => ballThrow.HasBallCollided());
     }
 
     //Invoke OnTurnEnd status effects for each game objects
@@ -54,10 +59,10 @@ public class AttackManager : MonoBehaviour
             foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player")){
                 StatusEffectsManager targetManager = enemy.GetComponent<StatusEffectsManager>();
                 StatusEffectsManager playerManager = player.GetComponent<StatusEffectsManager>();
+                playerManager.SetAttacker(enemy);
                 targetManager.SetSkillDmgAmt(10);
                 float enemyDmg = targetManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnAttack);
                 playerManager.SetSkillDmgAmt(enemyDmg);
-                playerManager.SetAttacker(enemy);
                 float finalDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnHit);
                 playerManager.SetSkillDmgAmt(finalDmg);
                 float trueDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnFinalDmg);

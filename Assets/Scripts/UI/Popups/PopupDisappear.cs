@@ -7,7 +7,7 @@ public class PopupDisappear : MonoBehaviour
     [SerializeField]private float timer;
     private float currTimer;
     [SerializeField]private float scaleSpeed;
-    private void Start() {
+    private void OnEnable() {
         currTimer = timer;
     }
     private void Update() {

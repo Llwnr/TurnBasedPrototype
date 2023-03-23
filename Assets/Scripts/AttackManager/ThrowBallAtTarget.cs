@@ -7,8 +7,14 @@ public class ThrowBallAtTarget : MonoBehaviour
     private Transform origin, target;
     [SerializeField]private GameObject ballToThrow;
     private bool hasCollidedWithTarget = false;
+    //Reset management
+    private void OnEnable() {
+        ballToThrow.SetActive(false);
+    }
+
     public void SetTargets(GameObject attacker, GameObject target){
         hasCollidedWithTarget = false;
+        ballToThrow.SetActive(true);
         ballToThrow.transform.position = attacker.transform.position;
         origin = attacker.transform;
         this.target = target.transform;
@@ -17,12 +23,23 @@ public class ThrowBallAtTarget : MonoBehaviour
     }
 
     IEnumerator ThrowBall(){
+        NotifyBallCollision ballCollision = ballToThrow.GetComponent<NotifyBallCollision>();
+        ballCollision.SetTarget(target);
         //Move ball closer to target until it has collided with it
         while(!hasCollidedWithTarget){
+            if(ballCollision.HasBallCollided()){
+                ballToThrow.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                ballToThrow.SetActive(false);
+                hasCollidedWithTarget = true;
+                yield break;
+            }
             Vector2 dir = target.position - transform.position;
-            ballToThrow.GetComponent<NotifyBallCollision>().SetTarget(target);
             ballToThrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir.x, dir.y).normalized*1000f);
             yield return null;
         }
+    }
+
+    public bool HasBallCollided(){
+        return hasCollidedWithTarget;
     }
 }
