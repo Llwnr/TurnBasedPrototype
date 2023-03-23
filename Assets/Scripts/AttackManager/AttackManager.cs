@@ -24,7 +24,6 @@ public class AttackManager : MonoBehaviour
         foreach(SkillBase skill in skillQueue){
             skill.ExecuteSkillAction();
             Debug.Log("Attacker: " + skill.GetAttacker() + " Target: " + skill.GetTarget());
-            Debug.Log("Work left here");
             //Make an object that will hit the target. When it hits start its animation, once animation ends execute skill action
             yield return new WaitForSeconds(1f);
         }
