@@ -22,6 +22,8 @@ public class AttackManager : MonoBehaviour
 
     public IEnumerator ExecuteActions(){
         foreach(SkillBase skill in skillQueue){
+            //Throw ball at target
+            skill.GetAttacker().GetComponent<ThrowBallAtTarget>().SetTargets(skill.GetAttacker(), skill.GetTarget());
             skill.ExecuteSkillAction();
             Debug.Log("Attacker: " + skill.GetAttacker() + " Target: " + skill.GetTarget());
             Debug.Log("Work left here");
