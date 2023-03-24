@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: AtkDown
   description: Reduce your attack damage
   effectCount: 2
-  effectIcon: {fileID: -368104670871730370, guid: 859aac23a5144d941a98f8fa2d83b759,
+  effectIcon: {fileID: -4023405976929784543, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
   canStack: 1
   activationCondition: 0

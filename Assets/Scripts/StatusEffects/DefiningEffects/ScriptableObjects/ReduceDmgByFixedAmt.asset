@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af83be44f6408d4a8a05377464c77ae, type: 3}
   m_Name: ReduceDmgByFixedAmt
   m_EditorClassIdentifier: 
-  effectName: FixedDmgReduce
-  description: Reduce final damage taken by fixed amount
+  effectName: Shield
+  description: Reduce damage taken by fixed amount
   effectCount: 5
-  effectIcon: {fileID: 3604210283413841320, guid: 859aac23a5144d941a98f8fa2d83b759,
+  effectIcon: {fileID: 40008577590307465, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
   canStack: 1
   activationCondition: 4

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af83be44f6408d4a8a05377464c77ae, type: 3}
   m_Name: BurnVulnerable
   m_EditorClassIdentifier: 
-  effectName: BurnDmgTakenUp
+  effectName: Burn Vulnerable
   description: "Take more dmg from burn. \n(10% per effect count)"
   effectCount: 2
   effectIcon: {fileID: -5130072741318572525, guid: 859aac23a5144d941a98f8fa2d83b759,

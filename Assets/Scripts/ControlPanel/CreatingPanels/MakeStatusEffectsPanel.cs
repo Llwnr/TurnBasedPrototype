@@ -44,7 +44,7 @@ public class MakeStatusEffectsPanel : MonoBehaviour
             //Setting display information
             newEffectsButton.GetComponent<Image>().sprite = statusEffect.effectIcon;
             newEffectsButton.GetComponent<SetEffectInfo>().SetEffectCount(statusEffect.effectCount.ToString());
-            newEffectsButton.GetComponent<SetEffectInfo>().SetDescription(statusEffect.effectName + "\n" + statusEffect.description);
+            newEffectsButton.GetComponent<SetEffectInfo>().SetDescription(statusEffect.effectName, statusEffect.description);
         }
     }
 }

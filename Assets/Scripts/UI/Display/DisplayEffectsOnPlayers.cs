@@ -52,7 +52,7 @@ public class DisplayEffectsOnPlayers : MonoBehaviour
         newEffectIcon.transform.SetParent(effectDisplayContainer.transform, false);
         newEffectIcon.GetComponent<Image>().sprite = effectData.effectIcon;
         newEffectIcon.GetComponent<SetEffectInfo>().SetEffectCount(effectData.effectCount.ToString());
-        newEffectIcon.GetComponent<SetEffectInfo>().SetDescription(effectData.effectName + "\n" + effectData.description);
+        newEffectIcon.GetComponent<SetEffectInfo>().SetDescription(effectData.effectName, effectData.description);
         return newEffectIcon;
     }
 }

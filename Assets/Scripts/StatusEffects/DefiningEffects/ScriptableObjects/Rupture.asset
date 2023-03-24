@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Rupture
   m_EditorClassIdentifier: 
   effectName: Rupture
-  description: When attacking, receive damage based on effect count
-  effectCount: 2
-  effectIcon: {fileID: 4042192115202400891, guid: 859aac23a5144d941a98f8fa2d83b759,
+  description: Activates on attack. Dealing damage based on effect count to SELF.
+  effectCount: 3
+  effectIcon: {fileID: -3961402712869046672, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
   canStack: 1
   activationCondition: 0

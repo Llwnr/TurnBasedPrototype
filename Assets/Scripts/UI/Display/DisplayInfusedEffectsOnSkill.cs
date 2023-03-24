@@ -15,7 +15,7 @@ public class DisplayInfusedEffectsOnSkill : MonoBehaviour
 
         SetEffectInfo iconInfo = newEffectIcon.GetComponent<SetEffectInfo>();
         iconInfo.SetEffectCount(statusEffect.effectCount.ToString());
-        iconInfo.SetDescription(statusEffect.effectName + "\n" + statusEffect.description);
+        iconInfo.SetDescription(statusEffect.effectName,statusEffect.description);
         iconInfo.SetCanvasSortOrder(sortIndex);
         sortIndex--;
         effectIcons.Add(newEffectIcon);

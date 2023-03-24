@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: AtkUp
   description: Deal more damage
   effectCount: 2
-  effectIcon: {fileID: -5261030078296842457, guid: 859aac23a5144d941a98f8fa2d83b759,
+  effectIcon: {fileID: 2462380424367044520, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
   canStack: 1
   activationCondition: 0

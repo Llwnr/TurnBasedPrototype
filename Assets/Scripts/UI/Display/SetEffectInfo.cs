@@ -18,7 +18,8 @@ public class SetEffectInfo : MonoBehaviour
         effectCount.GetComponent<TextMeshProUGUI>().text = text;
     }
 
-    public void SetDescription(string text){
-        descBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+    public void SetDescription(string nameText, string descText){
+        string mainText = "<size=110%><b><color=#FF0000>" + nameText + "</color></b></size>" + "\n" + descText;
+        descBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = mainText;
     }
 }

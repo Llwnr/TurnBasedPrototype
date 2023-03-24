@@ -24,6 +24,11 @@ public class EffectInflictionManager : MonoBehaviour
             effectToInflict.SetEffectInfo(statusEffect);
         }
 
+        StartCoroutine(ClearInfusion());
+    }
+
+    IEnumerator ClearInfusion(){
+        yield return null;
         GetComponent<StatusEffectsHolder>().ClearAll();
     }
     //Check if the specific status effect script already exist on target, in that case just increase the effect count

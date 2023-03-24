@@ -39,6 +39,7 @@ public class MakeSkillPanels : MonoBehaviour
             SetSkillInfo skillInfo = newSkillButton.GetComponent<SetSkillInfo>();
             skillInfo.SetName(skill.skillName);
             skillInfo.SetDescription(skill.description);
+            skillInfo.SetDamageText(skill.dmgAmt.ToString());
 
             //Defining skill actions
             SkillBase skillData = newSkillButton.AddComponent(System.Type.GetType(skill.GetSkillScript())) as SkillBase;

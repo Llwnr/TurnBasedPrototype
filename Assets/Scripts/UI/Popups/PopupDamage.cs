@@ -24,7 +24,13 @@ public class PopupDamage : MonoBehaviour, IReceivedDamage
 
     void GetDisplayDirection(out Vector3 offset){
         StatusEffectsManager statusEffectsManager = GetComponent<StatusEffectsManager>();
-        Transform attacker = statusEffectsManager.GetAttacker().transform;
+        //For self damage cases
+        Transform attacker = null;
+        if(statusEffectsManager.GetAttacker() == null){
+            attacker = transform;
+        }else{
+            attacker = statusEffectsManager.GetAttacker().transform;
+        }
         if((attacker.position.x - transform.position.x) > 0){
             offset = new Vector3(-1,0,0);
         }else{

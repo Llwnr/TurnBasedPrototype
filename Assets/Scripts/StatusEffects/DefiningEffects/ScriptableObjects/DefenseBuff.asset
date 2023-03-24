@@ -15,8 +15,8 @@ MonoBehaviour:
   effectName: DefUp
   description: Reduce damage taken
   effectCount: 1
-  effectIcon: {fileID: 1127282412886653438, guid: 859aac23a5144d941a98f8fa2d83b759,
+  effectIcon: {fileID: 8830666380349736772, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
-  canStack: 0
+  canStack: 1
   activationCondition: 1
   effectScript: {fileID: 11500000, guid: 71d8749e4851bda4287cb89723985b3b, type: 3}

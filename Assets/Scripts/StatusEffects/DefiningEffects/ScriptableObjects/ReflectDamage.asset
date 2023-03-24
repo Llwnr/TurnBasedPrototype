@@ -15,7 +15,7 @@ MonoBehaviour:
   effectName: Reflect
   description: Reflect damage taken to attacker
   effectCount: 2
-  effectIcon: {fileID: 40008577590307465, guid: 859aac23a5144d941a98f8fa2d83b759,
+  effectIcon: {fileID: 3802373208871085541, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
   canStack: 1
   activationCondition: 1
