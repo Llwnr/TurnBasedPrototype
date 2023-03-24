@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ReflectDamage
   m_EditorClassIdentifier: 
   effectName: Reflect
-  description: Reflect damage taken to the holder when attacking based on effect
-    count
+  description: Reflect damage taken to attacker
   effectCount: 2
   effectIcon: {fileID: 40008577590307465, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}

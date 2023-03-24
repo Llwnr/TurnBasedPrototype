@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DoubleInflict
   m_EditorClassIdentifier: 
   skillName: DoubleInflict
-  description: Inflict status effect twice
+  description: Inflict status effect 2x its effect count. Does not activate any effects
+    on target when hit.
   dmgAmt: 5
   maxStatusEffectAmount: 2
-  countMultiplier: 1
   actionScript: {fileID: 11500000, guid: 2e7e02cfda1e07a4b981bb91d9b1bd4c, type: 3}

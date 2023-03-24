@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttackManager : MonoBehaviour
 {
     //Store the actions to perform
     [SerializeField]private List<SkillBase> skillQueue = new List<SkillBase>();
+    [SerializeField]private bool actionsExecuting = false;
     
     public void AddToQueue(SkillBase skill){
         skillQueue.Add(skill);
@@ -15,8 +17,20 @@ public class AttackManager : MonoBehaviour
         skillQueue.Remove(skill);
     }
 
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
     
     public void StartExecuteActions(){
+        //Only exeucte actions once all actions are finished
+        if(!actionsExecuting){
+            actionsExecuting = true;
+        }else{
+            return;
+        }
         StartCoroutine(ExecuteActions());
     }
 
@@ -32,6 +46,7 @@ public class AttackManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         InvokeEndOfTurnEffects();
         skillQueue.Clear();
+        actionsExecuting = false;
     }
 
     //Check if the ball has hit enemy. In that case, execute its skill action and inflict status effects

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ItsABOMB
   m_EditorClassIdentifier: 
   effectName: Bomb
-  description: BOOM
+  description: 'BOOM!!!
+
+    Deal huge damage when counter reaches 0'
   effectCount: 5
   effectIcon: {fileID: -2840221343624816451, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}

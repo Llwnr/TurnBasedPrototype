@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Burn
   m_EditorClassIdentifier: 
   effectName: Burn
-  description: Deal burn damage at the end of turn
+  description: Deals burn damage at the end of turn
   effectCount: 5
   effectIcon: {fileID: 4435573432080243083, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}

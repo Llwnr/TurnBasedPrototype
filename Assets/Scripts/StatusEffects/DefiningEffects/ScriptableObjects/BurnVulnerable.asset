@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BurnVulnerable
   m_EditorClassIdentifier: 
   effectName: BurnDmgTakenUp
-  description: Take more burn damage
+  description: "Take more dmg from burn. \n(10% per effect count)"
   effectCount: 2
   effectIcon: {fileID: -5130072741318572525, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
