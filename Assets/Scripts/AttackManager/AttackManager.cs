@@ -29,11 +29,7 @@ public class AttackManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
         yield return StartCoroutine(ExecuteEnemyActions());
-        yield return new WaitForSeconds(1f);
         InvokeEndOfTurnEffects();
-
-        
-
         skillQueue.Clear();
     }
 
@@ -41,7 +37,17 @@ public class AttackManager : MonoBehaviour
     IEnumerator WaitTillBallCollides(SkillBase skill){
         ThrowBallAtTarget ballThrow = skill.GetAttacker().GetComponent<ThrowBallAtTarget>();
         ballThrow.SetTargets(skill.GetAttacker(), skill.GetTarget());
+        //Show the status effects inflicted on the skill button onto the ball
+        DisplayInfusedEffectsOnSkill skillInfusedEffects = ballThrow.GetBall().GetComponent<DisplayInfusedEffectsOnSkill>();
+        foreach(SO_StatusEffect statusEffect in skill.GetComponent<StatusEffectsHolder>().GetStatusEffects()){
+            skillInfusedEffects.CreateEffectIcon(statusEffect);
+        }
         yield return new WaitUntil(() => ballThrow.HasBallCollided());
+        //Wait till player clicks
+        while(!Input.GetMouseButton(0)){
+            yield return null;
+        }
+        ballThrow.SetBallInactive();
     }
 
     //Invoke OnTurnEnd status effects for each game objects
@@ -67,7 +73,7 @@ public class AttackManager : MonoBehaviour
                 playerManager.SetSkillDmgAmt(finalDmg);
                 float trueDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnFinalDmg);
                 player.GetComponent<HealthManager>().DamagePlayerBy(trueDmg);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
         }
     }

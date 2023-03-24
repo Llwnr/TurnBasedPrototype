@@ -46,3 +46,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: EffectIcon
+    uniqueID: 1274265665
+    locked: 0

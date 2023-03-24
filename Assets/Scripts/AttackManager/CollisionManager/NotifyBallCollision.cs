@@ -8,6 +8,8 @@ public class NotifyBallCollision : MonoBehaviour
     [SerializeField]private bool hasCollided;
     private void OnDisable() {
         hasCollided = false;
+        //Clear infused effect icons
+        GetComponent<DisplayInfusedEffectsOnSkill>().DestroyIcons();
     }
     public void SetTarget(Transform target){
         this.target = target;

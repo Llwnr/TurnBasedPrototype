@@ -12,6 +12,11 @@ public class ThrowBallAtTarget : MonoBehaviour
         ballToThrow.SetActive(false);
     }
 
+    public GameObject GetBall(){
+        return ballToThrow;
+    }
+
+    //Set the ball's destination
     public void SetTargets(GameObject attacker, GameObject target){
         hasCollidedWithTarget = false;
         ballToThrow.SetActive(true);
@@ -29,7 +34,6 @@ public class ThrowBallAtTarget : MonoBehaviour
         while(!hasCollidedWithTarget){
             if(ballCollision.HasBallCollided()){
                 ballToThrow.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                ballToThrow.SetActive(false);
                 hasCollidedWithTarget = true;
                 yield break;
             }
@@ -41,5 +45,9 @@ public class ThrowBallAtTarget : MonoBehaviour
 
     public bool HasBallCollided(){
         return hasCollidedWithTarget;
+    }
+
+    public void SetBallInactive(){
+        ballToThrow.SetActive(false);
     }
 }

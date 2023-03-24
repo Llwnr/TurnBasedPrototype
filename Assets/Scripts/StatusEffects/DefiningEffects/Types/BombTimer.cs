@@ -16,7 +16,7 @@ public class BombTimer : StatusEffectBase
     {
         effectCount--;
         if(effectCount <= 0){
-            Debug.Log("Deal fixed damage: 30" );
+            GetComponent<HealthManager>().DamagePlayerBy(20);
             StartCoroutine(DestroySelf());
         }
     }
