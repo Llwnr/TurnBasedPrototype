@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: FixedDmgReduce
   description: Reduce final damage taken by fixed amount
-  effectCount: 100
+  effectCount: 5
   effectIcon: {fileID: 3604210283413841320, guid: 859aac23a5144d941a98f8fa2d83b759,
     type: 3}
   canStack: 1

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class StatusEffectsManager : O_StatusEffect
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    //ONLY ONE CLASS PER GAMEOBJECT
+    private void OnEnable() {
+        if(GetComponents<O_StatusEffect>().Length > 1) Debug.LogError("More than one status effect observer");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    //The one who attacks
+    [SerializeField]private GameObject attacker;
+    public void SetAttacker(GameObject attacker){
+        this.attacker = attacker;
+    }
+    public GameObject GetAttacker(){
+        return attacker;
     }
 }

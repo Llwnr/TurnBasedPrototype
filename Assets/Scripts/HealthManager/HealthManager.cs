@@ -30,6 +30,9 @@ public class HealthManager : MonoBehaviour
     public void DamagePlayerBy(float dmgAmt){
         health -= dmgAmt;
         NotifyObservers(dmgAmt);
+        if(health <= 0){
+            Destroy(gameObject);
+        }
     }
 
     public float GetMaxHealth(){

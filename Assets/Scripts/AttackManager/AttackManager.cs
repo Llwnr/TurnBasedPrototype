@@ -29,6 +29,7 @@ public class AttackManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
         yield return StartCoroutine(ExecuteEnemyActions());
+        yield return new WaitForSeconds(1);
         InvokeEndOfTurnEffects();
         skillQueue.Clear();
     }
@@ -59,22 +60,37 @@ public class AttackManager : MonoBehaviour
         }
     }
 
+    //FOR ENEMY ATTACKS
     IEnumerator ExecuteEnemyActions(){
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies){
             foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player")){
+                //Throw ball as attack
+                yield return StartCoroutine(WaitTillEnemyBallHits(enemy,player));
+
                 StatusEffectsManager targetManager = enemy.GetComponent<StatusEffectsManager>();
                 StatusEffectsManager playerManager = player.GetComponent<StatusEffectsManager>();
                 playerManager.SetAttacker(enemy);
-                targetManager.SetSkillDmgAmt(10);
+                targetManager.SetSkillDmgAmt(20);
                 float enemyDmg = targetManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnAttack);
                 playerManager.SetSkillDmgAmt(enemyDmg);
                 float finalDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnHit);
                 playerManager.SetSkillDmgAmt(finalDmg);
                 float trueDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnFinalDmg);
                 player.GetComponent<HealthManager>().DamagePlayerBy(trueDmg);
-                yield return new WaitForSeconds(0.5f);
             }
         }
+    }
+
+    IEnumerator WaitTillEnemyBallHits(GameObject enemy, GameObject player){
+        ThrowBallAtTarget ballThrow = enemy.GetComponent<ThrowBallAtTarget>();
+        ballThrow.SetTargets(enemy, player);
+
+        yield return new WaitUntil(() => ballThrow.HasBallCollided());
+        //Wait till player clicks
+        while(!Input.GetMouseButton(0)){
+            yield return null;
+        }
+        ballThrow.SetBallInactive();
     }
 }

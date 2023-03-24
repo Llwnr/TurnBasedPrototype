@@ -5,24 +5,11 @@ using System;
 
 public abstract class O_StatusEffect : MonoBehaviour
 {
-    public StatusEffectBase.ActivationCondition testCondition;
     private float skillDmgAmt;
     public void SetSkillDmgAmt(float skillDmgAmt){
         this.skillDmgAmt = skillDmgAmt;
     }
-    //ONLY ONE CLASS PER GAMEOBJECT
-    private void OnEnable() {
-        if(GetComponents<O_StatusEffect>().Length > 1) Debug.LogError("More than one status effect observer");
-    }
-
-    //The one who attacks
-    private GameObject attacker;
-    public void SetAttacker(GameObject attacker){
-        this.attacker = attacker;
-    }
-    public GameObject GetAttacker(){
-        return attacker;
-    }
+    
 
     [SerializeField]private List<StatusEffectBase> onAttackAction = new List<StatusEffectBase>();
     [SerializeField]private List<StatusEffectBase> onHitAction = new List<StatusEffectBase>();
@@ -85,7 +72,6 @@ public abstract class O_StatusEffect : MonoBehaviour
     //This will handle what sort of status effects to execute based on the state of the character. Is the character attacking?
     //If player attacks with 6 dmg, first his dmg after buffs, say 50% becomes 9, then it is calculated onto enemy with debuffs
     public float GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition stateOfStatusEffect){
-        testCondition = stateOfStatusEffect;
         switch(stateOfStatusEffect){
             case StatusEffectBase.ActivationCondition.OnAttack:
                 return ExecuteEffectsFrom(onAttackAction);
