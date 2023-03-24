@@ -11,7 +11,7 @@ public class SetEffectInfo : MonoBehaviour
     [SerializeField]private GameObject descBox;
 
     public void SetCanvasSortOrder(int index){
-        canvas.GetComponent<Canvas>().sortingOrder = index;
+        //canvas.GetComponent<Canvas>().sortingOrder = index;
     }
 
     public void SetEffectCount(string text){
