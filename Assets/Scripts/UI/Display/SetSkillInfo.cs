@@ -19,7 +19,7 @@ public class SetSkillInfo : MonoBehaviour
     }
 
     public void SetDescription(string text){
-        descBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+        descBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "<size=120%> Skill Description: </size>\n" + text;
     }
     
 

@@ -9,6 +9,7 @@ public class SO_Skill : ScriptableObject {
     public string description;
     public int dmgAmt;
     public int maxStatusEffectAmount;
+    public SkillBase.SkillType skillType;
     [SerializeField]private TextAsset actionScript;
 
     public string GetSkillScript(){

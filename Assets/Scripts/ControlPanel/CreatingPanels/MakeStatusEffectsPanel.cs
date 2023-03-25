@@ -45,6 +45,8 @@ public class MakeStatusEffectsPanel : MonoBehaviour
             newEffectsButton.GetComponent<Image>().sprite = statusEffect.effectIcon;
             newEffectsButton.GetComponent<SetEffectInfo>().SetEffectCount(statusEffect.effectCount.ToString());
             newEffectsButton.GetComponent<SetEffectInfo>().SetDescription(statusEffect.effectName, statusEffect.description);
+            //To change effect color based on type. If buff make it yellow, if debuff make it red
+            newEffectsButton.GetComponent<SetEffectInfo>().SetColor(statusEffect);
         }
     }
 }

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AttackManager : MonoBehaviour
 {
     //Store the actions to perform
     [SerializeField]private List<SkillBase> skillQueue = new List<SkillBase>();
     [SerializeField]private bool actionsExecuting = false;
+
+    [SerializeField]private TextMeshProUGUI attackBtn;
     
     public void AddToQueue(SkillBase skill){
         skillQueue.Add(skill);
@@ -28,6 +31,7 @@ public class AttackManager : MonoBehaviour
         //Only exeucte actions once all actions are finished
         if(!actionsExecuting){
             actionsExecuting = true;
+            attackBtn.text = "WAIT FOR TURN END";
         }else{
             return;
         }
@@ -45,8 +49,13 @@ public class AttackManager : MonoBehaviour
         yield return StartCoroutine(ExecuteEnemyActions());
         yield return new WaitForSeconds(1);
         InvokeEndOfTurnEffects();
+        //Clear any infused effects
+        foreach(SkillBase skill in skillQueue){
+            skill.GetComponent<StatusEffectsHolder>().ClearAll();
+        }
         skillQueue.Clear();
         actionsExecuting = false;
+        attackBtn.text = "Attack";
     }
 
     //Check if the ball has hit enemy. In that case, execute its skill action and inflict status effects
@@ -92,9 +101,16 @@ public class AttackManager : MonoBehaviour
                 float finalDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnHit);
                 playerManager.SetSkillDmgAmt(finalDmg);
                 float trueDmg = playerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnFinalDmg);
-                player.GetComponent<HealthManager>().DamagePlayerBy(trueDmg);
+                CalculateDefenseAndDamage(player, trueDmg, SkillBase.SkillType.fire);
             }
         }
+    }
+
+    //Calculate damage after defense and then deal damage
+    public static void CalculateDefenseAndDamage(GameObject target, float dmgAmt, SkillBase.SkillType damageType){
+        float def = target.GetComponent<DefenseManager>().GetDefenseOfType(damageType);
+        float dmgToDeal = dmgAmt/def;
+        target.GetComponent<HealthManager>().DamagePlayerBy(dmgToDeal);
     }
 
     IEnumerator WaitTillEnemyBallHits(GameObject enemy, GameObject player){

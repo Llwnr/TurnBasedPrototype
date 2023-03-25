@@ -4,6 +4,15 @@ using UnityEngine;
 
 public abstract class SkillBase : MonoBehaviour
 {
+    //SET SKILL DAMAGE TYPE
+    public enum SkillType{
+        blunt,
+        pierce,
+        fire,
+        water,
+        mental
+    }
+    public static SkillType skillType;
     //SET BASE DAMAGE
     private float dmgAmt;
     public void SetDmgAmt(float amt){
@@ -27,6 +36,14 @@ public abstract class SkillBase : MonoBehaviour
     }
     public float GetCountMultiplier(){
         return countMultiplier;
+    }
+    //Set skill infos
+    [SerializeField]private SkillType mySkillType;
+    public void SetSkillType(SkillType skillType){
+        mySkillType = skillType;
+    }
+    public SkillType GetSkillType(){
+        return mySkillType;
     }
     private AttackManager attackManager;
     private void Awake() {
@@ -81,8 +98,7 @@ public abstract class SkillBase : MonoBehaviour
         //Calculate true damage after mitigations and other effects as such
         targetManager.SetSkillDmgAmt(finalDmg);
         float trueDmg = targetManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnFinalDmg);
-        target.GetComponent<HealthManager>().DamagePlayerBy(trueDmg);
-        Debug.Log(trueDmg);
+        AttackManager.CalculateDefenseAndDamage(GetTarget(), trueDmg, GetSkillType());
     }
 
 

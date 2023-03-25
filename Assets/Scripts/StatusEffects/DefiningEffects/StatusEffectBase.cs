@@ -11,6 +11,12 @@ public abstract class StatusEffectBase : MonoBehaviour
         OnFinalDmg
     }
     public static ActivationCondition condition;
+    //Effect type. Is it a buff or debuff?
+    public enum EffectType{
+        buff,
+        debuff
+    }
+    public EffectType effectType;
 
     //Manage when to activate the status effects
     protected ActivationCondition activationCondition;

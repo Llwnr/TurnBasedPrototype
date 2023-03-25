@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: HardHit
   m_EditorClassIdentifier: 
   skillName: HardHit
-  description: Hits with higher base damage
+  description: Hits with higher damage
   dmgAmt: 15
   maxStatusEffectAmount: 3
+  skillType: 1
   actionScript: {fileID: 11500000, guid: 9b1a5263265959544a65acec49722edf, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SelectTarget : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class SelectTarget : MonoBehaviour
         GetComponent<SkillBase>().ResetTargetOnCancellation();
     }
 
+    //Make player changing to select their skills available
     IEnumerator SetSelectionActive(bool value){
         yield return null;
         foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player")){

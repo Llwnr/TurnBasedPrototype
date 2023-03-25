@@ -51,8 +51,13 @@ public class DisplayEffectsOnPlayers : MonoBehaviour
         GameObject newEffectIcon = Instantiate(effectIcon, Vector3.zero, Quaternion.identity);
         newEffectIcon.transform.SetParent(effectDisplayContainer.transform, false);
         newEffectIcon.GetComponent<Image>().sprite = effectData.effectIcon;
-        newEffectIcon.GetComponent<SetEffectInfo>().SetEffectCount(effectData.effectCount.ToString());
-        newEffectIcon.GetComponent<SetEffectInfo>().SetDescription(effectData.effectName, effectData.description);
+
+        //Setting info, color of effect
+        SetEffectInfo effectInfo = newEffectIcon.GetComponent<SetEffectInfo>();
+        effectInfo.SetEffectCount(effectData.effectCount.ToString());
+        effectInfo.SetDescription(effectData.effectName, effectData.description);
+        effectInfo.SetColor(effectData);
+
         return newEffectIcon;
     }
 }

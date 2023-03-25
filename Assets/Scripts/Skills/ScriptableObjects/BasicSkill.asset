@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: BasicSkill
   m_EditorClassIdentifier: 
   skillName: BasicAttack
-  description: Nothing special
+  description: Deal 7 damage to target
   dmgAmt: 7
   maxStatusEffectAmount: 3
+  skillType: 0
   actionScript: {fileID: 11500000, guid: bc175e7719fc8ae4c8f1b489787051d5, type: 3}

@@ -19,4 +19,5 @@ MonoBehaviour:
     type: 3}
   canStack: 1
   activationCondition: 1
+  effectType: 1
   effectScript: {fileID: 11500000, guid: 465382915bc09d145a46ec3156095354, type: 3}

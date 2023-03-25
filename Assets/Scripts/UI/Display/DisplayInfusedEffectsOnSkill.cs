@@ -7,7 +7,6 @@ public class DisplayInfusedEffectsOnSkill : MonoBehaviour
 {
     [SerializeField]private GameObject effectContainer, effectIcon;
     private List<GameObject> effectIcons = new List<GameObject>();
-    private int sortIndex = 10;
     public void CreateEffectIcon(SO_StatusEffect statusEffect){
         GameObject newEffectIcon = Instantiate(effectIcon, Vector3.zero, Quaternion.identity);
         newEffectIcon.transform.SetParent(effectContainer.transform, false);
@@ -16,8 +15,7 @@ public class DisplayInfusedEffectsOnSkill : MonoBehaviour
         SetEffectInfo iconInfo = newEffectIcon.GetComponent<SetEffectInfo>();
         iconInfo.SetEffectCount(statusEffect.effectCount.ToString());
         iconInfo.SetDescription(statusEffect.effectName,statusEffect.description);
-        iconInfo.SetCanvasSortOrder(sortIndex);
-        sortIndex--;
+        iconInfo.SetColor(statusEffect);
         effectIcons.Add(newEffectIcon);
     }
 
@@ -32,6 +30,5 @@ public class DisplayInfusedEffectsOnSkill : MonoBehaviour
             Destroy(icon.gameObject);
         }
         effectIcons.Clear();
-        sortIndex = 10;
     }
 }

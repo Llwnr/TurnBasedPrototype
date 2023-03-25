@@ -425,9 +425,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38c7943f3b398a40b508c92b768ea82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   effectCount: {fileID: 3821741752451765000}
+  nameOnlyTMPro: {fileID: 0}
   descBox: {fileID: 6764639882705175784}
+  showOnlyName: 0
+  buffColor:
+    serializedVersion: 2
+    rgba: 4278255360
+  debuffColor:
+    serializedVersion: 2
+    rgba: 4278190335
 --- !u!114 &6851150658485903635
 MonoBehaviour:
   m_ObjectHideFlags: 0
