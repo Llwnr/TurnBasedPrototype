@@ -10,6 +10,8 @@ public class DisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField]private float hoverDuration;
     private float resetHoverDuration;
 
+    private bool deactivateOnClick = false;
+
     private void Awake() {
         resetHoverDuration = hoverDuration;
         SetObjectDisplay(false);
@@ -23,6 +25,24 @@ public class DisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         isHovering = false;
         SetObjectDisplay(false);
         ResetDuration();
+    }
+
+    //For gameobjects, activate on click
+    private void OnMouseDown() {
+        ToggleDisplay();
+    }
+    private void OnMouseExit() {
+        deactivateOnClick = true;
+    }
+
+    void ToggleDisplay(){
+        if(!isHovering)
+            isHovering = true;
+        else{
+            isHovering = false;
+            SetObjectDisplay(false);
+            ResetDuration();
+        }
     }
 
     private void OnDisable() {
@@ -39,6 +59,7 @@ public class DisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void ResetDuration(){
         hoverDuration = resetHoverDuration;
         isHovering = false;
+        deactivateOnClick = false;
     }
 
     private void Update() {
@@ -47,6 +68,10 @@ public class DisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
         if(hoverDuration <= 0){
             SetObjectDisplay(true);
+        }
+        //If mouse click anywhere, deactivate panel
+        if(deactivateOnClick && Input.GetMouseButtonDown(0)){
+            ToggleDisplay();
         }
     }
 
