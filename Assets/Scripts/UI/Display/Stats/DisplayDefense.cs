@@ -22,9 +22,17 @@ public class DisplayDefense : MonoBehaviour
     void CreatePanel(int defenseType){
         GameObject newDefensePanel = Instantiate(defensePanel, Vector3.zero, Quaternion.identity);
         //Set its data
-        newDefensePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = defenseManager.GetDefenseOfType((SkillBase.SkillType)defenseType).ToString();
+        float defenseTypeIndex = defenseManager.GetDefenseOfType((SkillBase.SkillType)defenseType);
+        newDefensePanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = CalculateDefenseAdvantageType(defenseTypeIndex);
         newDefensePanel.GetComponent<Image>().sprite = defenseManager.GetDefenseIcon((SkillBase.SkillType)defenseType);
 
         newDefensePanel.transform.SetParent(transform,false);
+    }
+
+    string CalculateDefenseAdvantageType(float defenseValue){
+        if(defenseValue >= 1.5) return "Endured";
+        else if(defenseValue >= 1) return "Normal";
+        else if(defenseValue >= 0.5) return "Weak";
+        else return "Allergic";
     }
 }

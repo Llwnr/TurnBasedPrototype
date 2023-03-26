@@ -12,11 +12,17 @@ public class Burn : StatusEffectBase
             if(statusEffect.GetType().Name == "BurnVulnerable"){
                 multiplier = 1 + statusEffect.GetEffectCount()/10f;
                 statusEffect.ReduceCount();
-                Debug.Log("Multiplier: " + multiplier);
             }
         }
-        GetComponent<HealthManager>().DamagePlayerBy(effectCount*multiplier);
+        float baseDmgAmt = effectCount*multiplier;
+        GetComponent<HealthManager>().DamagePlayerBy(CalculateDmgAfterElementalAdvantage(baseDmgAmt));
         ReduceCount();
+        return dmgAmt;
+    }
+
+    float CalculateDmgAfterElementalAdvantage(float dmgAmt){
+        float fireDef = GetComponent<DefenseManager>().GetFireDef();
+        dmgAmt = dmgAmt/fireDef;
         return dmgAmt;
     }
 }

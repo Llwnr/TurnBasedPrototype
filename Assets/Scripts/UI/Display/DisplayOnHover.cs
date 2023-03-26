@@ -71,7 +71,8 @@ public class DisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
         //If mouse click anywhere, deactivate panel
         if(deactivateOnClick && Input.GetMouseButtonDown(0)){
-            ToggleDisplay();
+            SetObjectDisplay(false);
+            ResetDuration();
         }
     }
 

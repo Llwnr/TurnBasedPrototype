@@ -82,6 +82,11 @@ public class AttackManager : MonoBehaviour
             StatusEffectsManager targetManager = enemy.GetComponent<StatusEffectsManager>();
             targetManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnTurnEnd);
         }
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players){
+            StatusEffectsManager targetManager = player.GetComponent<StatusEffectsManager>();
+            targetManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnTurnEnd);
+        }
     }
 
     //FOR ENEMY ATTACKS
