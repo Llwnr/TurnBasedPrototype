@@ -15,6 +15,7 @@ MonoBehaviour:
   skillName: HardHit
   description: Hits with higher damage
   dmgAmt: 15
+  countMultiplier: 1
   maxStatusEffectAmount: 3
   skillType: 1
   actionScript: {fileID: 11500000, guid: 9b1a5263265959544a65acec49722edf, type: 3}

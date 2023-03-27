@@ -46,6 +46,7 @@ public class MakeSkillPanels : MonoBehaviour
             skillData.SetDmgAmt(skill.dmgAmt);
             skillData.SetMaxStatusEffects(skill.maxStatusEffectAmount);
             skillData.SetSkillType(skill.skillType);
+            skillData.SetCountMultiplier(skill.countMultiplier);
 
             //Give skill reference to player so player can set active their respective skill buttons when clicked
             player.GetComponent<ReferenceSkill>().SetSkillReference(newSkillButton);

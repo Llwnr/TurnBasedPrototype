@@ -15,5 +15,7 @@ MonoBehaviour:
   skillName: Heal Target
   description: Heals target
   dmgAmt: 10
+  countMultiplier: 1
   maxStatusEffectAmount: 2
+  skillType: 0
   actionScript: {fileID: 11500000, guid: 4b6086a2ee0efc34e865f126613a9a41, type: 3}

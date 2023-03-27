@@ -31,7 +31,7 @@ public class HealthManager : MonoBehaviour
         health -= dmgAmt;
         NotifyObservers(dmgAmt);
         if(health <= 0){
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

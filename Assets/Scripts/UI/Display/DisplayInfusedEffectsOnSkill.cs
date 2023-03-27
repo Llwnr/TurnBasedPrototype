@@ -20,8 +20,23 @@ public class DisplayInfusedEffectsOnSkill : MonoBehaviour
     }
 
     private void Update() {
-        if(GetComponent<StatusEffectsHolder>() != null && GetComponent<StatusEffectsHolder>().GetStatusEffects().Count == 0){
+        StatusEffectsHolder effectsHolder = GetComponent<StatusEffectsHolder>();
+        if(effectsHolder == null) return;
+
+        RemoveExcessEffects(effectsHolder);
+        //Check if the effects attacked to skills are removed
+        for(int i=0; i<effectsHolder.GetStatusEffects().Count; i++){
+            //Remove null elements
+            if(effectsHolder.GetStatusEffects()[i] == null){
+                effectsHolder.GetStatusEffects().RemoveAt(i);
+                i--;
+            }
+        }
+        
+        //Destroy icons that have been removed
+        if(GetComponent<StatusEffectsHolder>().GetStatusEffects().Count == 0){
             DestroyIcons();
+            effectIcons.Clear();
         }
     }
 
@@ -29,6 +44,12 @@ public class DisplayInfusedEffectsOnSkill : MonoBehaviour
         foreach(GameObject icon in effectIcons){
             Destroy(icon.gameObject);
         }
-        effectIcons.Clear();
+    }
+
+    void RemoveExcessEffects(StatusEffectsHolder effectsHolder){
+        if(effectsHolder.GetStatusEffects().Count != effectIcons.Count){
+            Destroy(effectIcons[effectIcons.Count-1]);
+            effectIcons.RemoveAt(effectIcons.Count-1);
+        }
     }
 }

@@ -18,6 +18,7 @@ public class ThrowBallAtTarget : MonoBehaviour
 
     //Set the ball's destination
     public void SetTargets(GameObject attacker, GameObject target){
+        if(!gameObject.activeSelf) return;
         hasCollidedWithTarget = false;
         ballToThrow.SetActive(true);
         ballToThrow.transform.position = attacker.transform.position;

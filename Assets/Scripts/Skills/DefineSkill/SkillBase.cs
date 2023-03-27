@@ -30,7 +30,7 @@ public abstract class SkillBase : MonoBehaviour
         return maxStatusEffectAmount;
     }
     //How much should the skill inflict status effect. x2? x1? x5?
-    private float countMultiplier;
+    [SerializeField]private float countMultiplier;
     public void SetCountMultiplier(float multiplier){
         countMultiplier = multiplier;
     }
@@ -103,7 +103,7 @@ public abstract class SkillBase : MonoBehaviour
 
 
     protected void InflictStatusEffects(){
-        GetComponent<EffectInflictionManager>().InflictStatusEffects();
+        GetComponent<EffectInflictionManager>().InflictStatusEffects(countMultiplier);
         GetComponent<SelectTarget>().RemoveLine();
     }
 }

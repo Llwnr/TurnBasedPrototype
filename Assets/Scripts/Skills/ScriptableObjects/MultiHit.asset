@@ -15,6 +15,7 @@ MonoBehaviour:
   skillName: MultiHit
   description: Hits two times
   dmgAmt: 4
+  countMultiplier: 1
   maxStatusEffectAmount: 4
   skillType: 0
   actionScript: {fileID: 11500000, guid: 877460785b812ee45bf17ff9af6fed90, type: 3}

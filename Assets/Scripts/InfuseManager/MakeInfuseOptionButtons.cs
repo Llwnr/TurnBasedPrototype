@@ -8,7 +8,7 @@ public class MakeInfuseOptionButtons : MonoBehaviour
 {
     [SerializeField]private GameObject infuseOptionButton;//Used to change the element of the skill. Such as pierce, fire, blunt etc
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         CreateButtons();
     }
@@ -20,6 +20,8 @@ public class MakeInfuseOptionButtons : MonoBehaviour
             newButton.transform.SetParent(transform, false);
             newButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = skillType.ToString();
             newButton.GetComponent<ChangeSkillDamageType>().SetSkillType(skillType);
+            newButton.GetComponent<ToggleDrawback>().SetSkillReference(transform.parent.transform.parent.GetComponent<SkillBase>());
+            
         }
     }
 }

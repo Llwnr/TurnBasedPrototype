@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8802811840161454465}
   - component: {fileID: 6771134305985592119}
   - component: {fileID: 4837697478422503436}
+  - component: {fileID: 5794537319156680623}
   m_Layer: 5
   m_Name: InfuseOption
   m_TagString: Untagged
@@ -131,6 +132,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5794537319156680623}
+        m_MethodName: WhenClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4837697478422503436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +153,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba4d4f3ffff52684b9ea99d2fc87bb25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5794537319156680623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049217804776113742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101563b6904788e45a597b82fd893b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7544213042544845506

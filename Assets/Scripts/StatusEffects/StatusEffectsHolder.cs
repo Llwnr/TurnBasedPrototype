@@ -17,6 +17,26 @@ public class StatusEffectsHolder : MonoBehaviour
         }
     }
 
+    public void OnInfuse() {
+        SkillBase mySkill = GetComponent<SkillBase>();
+        if(mySkill == null) return;
+        //Reduce skill holding amount when infused
+        int maxHoldAmt = mySkill.GetMaxStatusEffects();
+        maxHoldAmt -= 2;
+        if(maxHoldAmt < 0) maxHoldAmt = 0;
+        mySkill.SetMaxStatusEffects(maxHoldAmt);
+        Debug.Log(maxHoldAmt);
+    }
+
+    private void Update() {
+        SkillBase mySkill = GetComponent<SkillBase>();
+        if(mySkill == null) return;
+
+        while(myStatusEffects.Count > mySkill.GetMaxStatusEffects()){
+            myStatusEffects.RemoveAt(myStatusEffects.Count-1);
+        }
+    }
+
     public void ClearAll(){
         myStatusEffects.Clear();
     }

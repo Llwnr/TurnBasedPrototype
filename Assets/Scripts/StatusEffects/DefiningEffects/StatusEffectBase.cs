@@ -77,7 +77,7 @@ public abstract class StatusEffectBase : MonoBehaviour
         GetComponent<O_StatusEffect>().AddObserver(this);
     }
 
-    private void OnDisable() {
+    private void OnDestroy() {
         GetComponent<O_StatusEffect>().RemoveObserver(this);
     }
 }

@@ -8,6 +8,7 @@ public class SO_Skill : ScriptableObject {
     [TextArea(15,20)]
     public string description;
     public int dmgAmt;
+    public float countMultiplier = 1;
     public int maxStatusEffectAmount;
     public SkillBase.SkillType skillType;
     [SerializeField]private TextAsset actionScript;
