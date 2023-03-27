@@ -28,7 +28,7 @@ public class AttackManager : MonoBehaviour
 
     
     public void StartExecuteActions(){
-        //Only exeucte actions once all actions are finished
+        //Only execute actions once all actions are finished
         if(!actionsExecuting){
             actionsExecuting = true;
             attackBtn.text = "WAIT FOR TURN END";
@@ -40,6 +40,8 @@ public class AttackManager : MonoBehaviour
 
     public IEnumerator ExecuteActions(){
         foreach(SkillBase skill in skillQueue){
+            //Don't activate skills of dead ones or if the target is dead
+            if(!skill.gameObject.activeSelf || !skill.GetTarget().activeSelf) continue;
             Debug.Log(skill.GetType());
             //Wait for attack to hit, then execute skill
             yield return StartCoroutine(WaitTillBallCollides(skill));

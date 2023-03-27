@@ -29,6 +29,7 @@ public class ThrowBallAtTarget : MonoBehaviour
     }
 
     IEnumerator ThrowBall(){
+        StartCoroutine(SetBallAsHit());
         NotifyBallCollision ballCollision = ballToThrow.GetComponent<NotifyBallCollision>();
         ballCollision.SetTarget(target);
         //Move ball closer to target until it has collided with it
@@ -42,6 +43,11 @@ public class ThrowBallAtTarget : MonoBehaviour
             ballToThrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir.x, dir.y).normalized*1000f);
             yield return null;
         }
+    }
+
+    IEnumerator SetBallAsHit(){
+        yield return new WaitForSeconds(5);
+        hasCollidedWithTarget = true;
     }
 
     public bool HasBallCollided(){
