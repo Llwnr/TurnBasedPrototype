@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DefenseManager : MonoBehaviour
 {
-    [SerializeField]private float bluntDef, pierceDef, fireDef, waterDef, mentalDef;
-    [SerializeField]private Sprite blunt, pierce, fire, water, mental;
+    [SerializeField]private float bluntDef, pierceDef, fireDef, waterDef;
+    [SerializeField]private Sprite blunt, pierce, fire, water;
     public float GetDefenseOfType(SkillBase.SkillType skillType){
         switch(skillType){
             case SkillBase.SkillType.blunt:
@@ -16,8 +16,6 @@ public class DefenseManager : MonoBehaviour
                 return fireDef;
             case SkillBase.SkillType.water:
                 return waterDef;
-            case SkillBase.SkillType.mental:
-                return mentalDef;
             default:
                 return 0;
         }
@@ -33,8 +31,6 @@ public class DefenseManager : MonoBehaviour
                 return fire;
             case SkillBase.SkillType.water:
                 return water;
-            case SkillBase.SkillType.mental:
-                return mental;
             default:
                 return null;
         }
@@ -51,8 +47,5 @@ public class DefenseManager : MonoBehaviour
     }
     public float GetWaterDef(){
         return waterDef;
-    }
-    public float GetMentalDef(){
-        return mentalDef;
     }
 }

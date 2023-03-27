@@ -34,6 +34,9 @@ public class DisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void OnMouseExit() {
         deactivateOnClick = true;
     }
+    private void OnMouseEnter() {
+        deactivateOnClick = false;
+    }
 
     void ToggleDisplay(){
         if(!isHovering)

@@ -18,8 +18,10 @@ public class ToggleDrawback : MonoBehaviour
     public void WhenClicked(){
         //Check if user infused or not
         if(mySkill.GetSkillType() == origSkillType){
+            mySkill.SetInfusion(false);
             Deactivated();
         }else{
+            mySkill.SetInfusion(true);
             Activated();
         }
     }

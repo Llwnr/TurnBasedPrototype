@@ -9,8 +9,7 @@ public abstract class SkillBase : MonoBehaviour
         blunt,
         pierce,
         fire,
-        water,
-        mental
+        water
     }
     public static SkillType skillType;
     //SET BASE DAMAGE
@@ -36,6 +35,11 @@ public abstract class SkillBase : MonoBehaviour
     }
     public float GetCountMultiplier(){
         return countMultiplier;
+    }
+    //Should the skill activate drawbacks
+    private bool isInfused = false;
+    public void SetInfusion(bool value){
+        isInfused = value;
     }
     //Set skill infos
     [SerializeField]private SkillType mySkillType;
@@ -83,12 +87,17 @@ public abstract class SkillBase : MonoBehaviour
         //Invoke status effects based on who is being hit and by whom
         StatusEffectsManager targetManager = GetTarget().GetComponent<StatusEffectsManager>();
         StatusEffectsManager attackerManager = GetAttacker().GetComponent<StatusEffectsManager>();
+
+        
+
         //Get attacker's final dmg after buffs and debuffs:
         if(attacker.tag == target.tag){//If player selects player then halve the damage dealt to player
             attackerManager.SetSkillDmgAmt(GetSkillDmgAmt()/2f);
         }else{
             attackerManager.SetSkillDmgAmt(GetSkillDmgAmt());
         }
+
+        ActivateDrawbacks();
         
         float attackerFinalDmg = attackerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnAttack);
         //Calculate enemy's receiving final damage after enemy's buffs and debuffs:
@@ -99,6 +108,11 @@ public abstract class SkillBase : MonoBehaviour
         targetManager.SetSkillDmgAmt(finalDmg);
         float trueDmg = targetManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnFinalDmg);
         AttackManager.CalculateDefenseAndDamage(GetTarget(), trueDmg, GetSkillType());
+    }
+
+    void ActivateDrawbacks(){
+        if(!isInfused) return;
+        AttackManager.CalculateDefenseAndDamage(GetAttacker(), GetSkillDmgAmt(), GetSkillType());
     }
 
 
