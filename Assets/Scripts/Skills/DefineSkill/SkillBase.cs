@@ -96,7 +96,7 @@ public abstract class SkillBase : MonoBehaviour
         }else{
             attackerManager.SetSkillDmgAmt(GetSkillDmgAmt());
         }
-
+        //Drawbacks such as deal damage to self when skill is infused with another element
         ActivateDrawbacks();
         
         float attackerFinalDmg = attackerManager.GetDmgAfterStatusEffects(StatusEffectBase.ActivationCondition.OnAttack);

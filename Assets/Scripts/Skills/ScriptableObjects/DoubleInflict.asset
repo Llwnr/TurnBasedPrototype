@@ -18,5 +18,5 @@ MonoBehaviour:
   dmgAmt: 0
   countMultiplier: 2
   maxStatusEffectAmount: 2
-  skillType: 0
+  skillType: 3
   actionScript: {fileID: 11500000, guid: 2e7e02cfda1e07a4b981bb91d9b1bd4c, type: 3}

@@ -10,7 +10,13 @@ public class MakeInfuseOptionButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetOriginalSkillType();
         CreateButtons();
+    }
+
+    void SetOriginalSkillType(){
+        GetComponentInChildren<ChangeSkillDamageType>().SetSkillType(transform.parent.transform.parent.GetComponent<SkillBase>().GetSkillType());
+        GetComponentInChildren<ToggleDrawback>().SetSkillReference(transform.parent.transform.parent.GetComponent<SkillBase>());
     }
 
     //Create the button that will change the skill damage type accordingly.
@@ -21,7 +27,6 @@ public class MakeInfuseOptionButtons : MonoBehaviour
             newButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = skillType.ToString();
             newButton.GetComponent<ChangeSkillDamageType>().SetSkillType(skillType);
             newButton.GetComponent<ToggleDrawback>().SetSkillReference(transform.parent.transform.parent.GetComponent<SkillBase>());
-            
         }
     }
 }

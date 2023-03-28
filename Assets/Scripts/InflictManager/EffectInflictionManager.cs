@@ -23,8 +23,6 @@ public class EffectInflictionManager : MonoBehaviour
             //Setting info
             effectToInflict.SetEffectInfo(statusEffect);
         }
-
-        ClearInfusion();
     }
 
     void ClearInfusion(){

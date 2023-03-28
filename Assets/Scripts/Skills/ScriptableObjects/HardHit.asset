@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: HardHit
   description: Hits with higher damage
-  dmgAmt: 15
+  dmgAmt: 10
   countMultiplier: 1
   maxStatusEffectAmount: 3
   skillType: 1
