@@ -29,6 +29,6 @@ public class ShowQueue : MonoBehaviour
             }
         }
 
-        displayActionsQueue.GetComponent<TextMeshProUGUI>().text = queueInString;
+        displayActionsQueue.GetComponent<TextMeshProUGUI>().text = "Actions:\n" + queueInString;
     }
 }

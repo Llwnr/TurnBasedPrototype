@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - AttackManager
   - ControlPanel
+  - Tutorial
   layers:
   - Default
   - TransparentFX

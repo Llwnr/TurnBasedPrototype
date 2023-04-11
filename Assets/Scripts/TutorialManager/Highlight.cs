@@ -29,7 +29,7 @@ public class Highlight : MonoBehaviour
         int incrOrDecr = 1;
         Color opacityChanger = GetComponent<SpriteRenderer>().color;
         while(true){
-            duration -= Time.deltaTime * incrOrDecr;
+            duration -= 0.01f * incrOrDecr;
             opacityChanger.a = duration/maxDuration;
             GetComponent<SpriteRenderer>().color = opacityChanger;
             if(duration < 0 || duration > maxDuration){
